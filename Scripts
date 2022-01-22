@@ -1,0 +1,53 @@
+-- ================================
+-- Create Backup Device Template
+-- ================================
+USE master
+GO
+
+--Crea dispositivo de almacenamiento
+EXEC sp_addumpdevice 'disk', 'AdventureWorks2019BackupDevice',   
+'D:\BACKUP\AdventureWorks2019BackupDevice.bak';  
+GO
+
+--Ver los dispositivos de backup del servidor
+SELECT      *
+FROM        sys.backup_devices
+GO
+
+
+--Crear el primer backup
+BACKUP DATABASE AdventureWorks2019   
+ TO AdventureWorks2019BackupDevice  
+   WITH FORMAT, INIT, NAME = N'AdventureWorks2019 Full Backup' ;  
+GO  
+
+
+
+BACKUP DATABASE AdventureWorks2019 
+	TO  DISK = N'D:\BACKUP\AdventureWorks2019-Full.bak' 
+WITH 
+	NOFORMAT, 
+	COMPRESSION,
+	NOINIT,  
+	NAME = N'AdventureWorks2019-Full Database Backup', 
+	SKIP, 
+	STATS = 10;
+GO
+
+
+﻿RESTORE DATABASE AdventureWorks2019 
+FROM AdventureWorks2019BackupDevice 
+WITH FILE = 2, 
+    MOVE N'AdventureWorks2019_Data' TO N'D:\BACKUP\Data\AdventureWorks2019_Data.mdf', 
+	MOVE N'AdventureWorks2019_Data_2' TO N'D:\BACKUP\Data\AdventureWorks2019_Data_2.mdf', 
+	MOVE N'AdventureWorks2019_Data_3' TO N'D:\BACKUP\Data\AdventureWorks2019_Data_3.mdf', 
+	MOVE N'AdventureWorks2019_Data_4' TO N'D:\BACKUP\Data\AdventureWorks2019_Data_4.mdf', 
+	MOVE N'AdventureWorks2019_Data_5' TO N'D:\BACKUP\Data\AdventureWorks2019_Data_5.mdf', 
+    MOVE N'AdventureWorks2019_Log_1' TO N'D:\BACKUP\Data\AdventureWorks2019_Data_Log_1.ldf', 
+	MOVE N'AdventureWorks2019_Log_2' TO N'D:\BACKUP\Data\AdventureWorks2019_Data_Log_2.ldf',
+NOUNLOAD, REPLACE, STATS = 10
+GO
+
+
+
+
