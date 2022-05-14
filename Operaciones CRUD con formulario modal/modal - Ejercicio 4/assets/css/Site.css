@@ -1,0 +1,81 @@
+html,
+body {
+	font-family: "Helvetica", Arial;
+}
+h1{
+	color: #3c8dbc;
+	text-align: center;
+	text-shadow: 2px 2px #001f3f;
+}
+/*Definición de estilos para fielset*/
+fieldset {
+    font-family: sans-serif;
+    border: 3px solid green;
+    background: #ddd;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+fieldset legend {
+    background: green;
+    color: #fff;
+    padding: 3px 5px ;
+    font-size: 18px;
+    border-radius: 3px;
+    box-shadow: 0 0 0 3px #ddd;
+    margin-left: 20px;
+}
+/*Definición de estilos para botones*/
+html input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.btn {
+	display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    width: 123px;
+}
+
+.btn-default {
+	color: #fff;
+	background-color: #00a65a;
+    border-color: #008d4c;
+}
+/*Definición de estilos para tabla*/
+table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;/*tipo de letra*/
+    border-collapse: collapse;/*Borde colapsado, los bordes de la tabla están contraídos en un solo borde*/
+    width: 100%;/*Usar todo el ancho del contenedor*/
+}
+
+table td, table th {
+    border: 1px solid #ddd; /*grosor del borde 1 pixel, color gris*/
+    padding: 8px; /*espacio interno de 8 pixeles*/
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #ddd;}/*Obscurer (cambiar tono) al pasar el mouse sobre la fila*/
+
+table th {
+    padding-top: 12px;/*Espacio interno superior*/
+    padding-bottom: 12px; /*Espacio interno inferior*/
+    text-align: left;/*Alineación de texto a la izquierda*/
+    background-color: #4CAF50; /*fondo de color verde*/
+    color: white;/*color de texto blanco*/
+}
